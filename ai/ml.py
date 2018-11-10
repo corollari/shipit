@@ -15,8 +15,7 @@ outp = json.loads(f.read())
 # load pima indians dataset
 #dataset = numpy.loadtxt("pima-indians-diabetes.csv", delimiter=",")
 # split into input (X) and output (Y) variables
-dataset=[range(9)] #TODO
-dataset=numpy.array(dataset)
+
 X = numpy.array(inp)#dataset[:,0:8]
 Y = numpy.array(outp)#dataset[:,8]
 
@@ -40,3 +39,11 @@ predictions = model.predict(X)
 #print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
 print(model.predict(X))
+
+model.save_weights("weights.hdf5")
+open("model.json", "w+").write(model.to_json())
+
+# Recover model:
+# from keras.models import model_from_json
+# model = model_from_json(open("model.json", "r").read())
+# model.load_weights("weights.hdf5", by_name=False)

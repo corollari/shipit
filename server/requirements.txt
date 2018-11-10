@@ -1,1 +1,4 @@
 Flask
+keras
+h5py
+requests
