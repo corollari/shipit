@@ -5,10 +5,10 @@ let contractAddress="0xc1769937adb8e0a8338690acd0325d6fdd87a0a0"
 
 var ShipIt = web3.eth.contract(ABI).at(contractAddress);
 
-function createProject(){
-	let length=document.querySelector("#message").value;
+function createProject(e){
+	let length=document.querySelector("#message").value*3600*24;
 	let amount=document.querySelector("#money").value;
-	ShipIt.startCountDown(length, {from: web3.eth.accounts[0], gas: 3000000, value: 100}, function(err, res){});
+	ShipIt.startCountDown(length, {from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei(amount, "ether")}, function(err, res){});
 }
 
 function estimateLength(){
@@ -18,6 +18,35 @@ function estimateLength(){
 		.then(function(response) {
 			return response.text();
 		}).then(function(txt) {
-			document.querySelector("#message").value=txt;
+			document.querySelector("#message").value=Number(txt)/(3600*24);
 		});
+}
+
+function loadProjects(){
+document.querySelector("#intro .fields").innerHTML="";
+ShipIt.getContractsByOwner(web3.eth.accounts[0], (err, res)=>
+	{
+
+		console.log(res);
+		for(let i=0; i<res.length; i++){
+			document.querySelector("#intro .fields").innerHTML+=' <div class="field half">		<label for="proj">Project '+i+'</label><input type="text" id="proj'+i+'" /></div><div class="field half"><label for="name">. </label><button onclick="verify('+i+')">SUBMIT</button></div>'
+		}
+	}
+);
+}
+
+function verify(id){
+	/*fetch("/api2/"+document.querySelector("#"+id).value)
+		.then(function(response) {
+			return response.text();
+		}).then(function(txt) {
+			if(txt=="true"){
+				alert("Verified!");
+			}
+		});
+	*/
+	let url = document.querySelector("#proj"+id).value;
+	ShipIt.verify(id, function(err, res){
+		alert("Verified!");
+	});
 }

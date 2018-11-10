@@ -26,16 +26,15 @@
 							<div class="inner">
 								<h1>Ship It</h1>
 								<p>
-								<a href="#contact"><button class="primary">Start a new project</button></a>
+								Because the best motivator is money
 								</p>
+								<a href="#contact"><button class="primary">Start a new project</button></a>
 							</div>
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#intro">Intro</a></li>
-								<li><a href="#work">Work</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#contact">Contact</a></li>
+								<li><a href="#intro" onclick="loadProjects()">Projects</a></li>
+								<li><a href="#contact">Create</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
@@ -46,10 +45,12 @@
 
 						<!-- Intro -->
 							<article id="intro">
-								<h2 class="major">Intro</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+								<h2 class="major">Projects</h2>
+								<div id="projects" class="form">
+									<div class="fields">
+									</div>
+
+								</div>
 							</article>
 
 						<!-- Work -->
@@ -70,7 +71,7 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Create project</h2>
-								<form method="post" action="#">
+								<div class="form">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Github user</label>
@@ -90,16 +91,10 @@
 										</div>
 									</div>
 									<ul class="actions">
-										<li><button onclick="createProject()" class="primary">Create</button></li>
+										<li><button onclick="createProject()" href='javascript:void(0);' class="primary">Create</button></li>
 										<li><button onclick ="estimateLength()">Estimate length</button></li>
 									</ul>
-								</form>
-								<ul class="icons">
-									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
+								</div>
 							</article>
 
 						<!-- Elements -->
@@ -348,7 +343,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 
 			</div>
