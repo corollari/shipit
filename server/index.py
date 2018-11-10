@@ -110,9 +110,9 @@ def hello_world(username, repo):
         matlav.append(data[i]['input']['language']+data[i]['input']['description']+data[i]['input']['topics']+data[i]['input']['experiencelgs'])
     print(matlav)
     
-    print(numpy.array([matlav[0], matlav[0]]).shape)
 
-    return str(model.predict(matlav)[0][0])
+
+    return str(model.predict(numpy.array(matlav))[0][0])
 
 model = model_from_json(open("../ai/model.json", "r").read())
 model.load_weights("../ai/weights.hdf5", by_name=False)
